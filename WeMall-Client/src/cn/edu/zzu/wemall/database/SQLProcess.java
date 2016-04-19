@@ -49,7 +49,7 @@ public class SQLProcess {
 			in.put("itemtotal", price * num);
 			db.update("wemallcart", in, "id=?", new String[] { id + "" });
 		}
-
+		
 	}
 
 	/**
@@ -69,6 +69,7 @@ public class SQLProcess {
 				num = cursor.getInt(0);
 			}
 		}
+	
 		return num;
 	}
 
@@ -90,6 +91,7 @@ public class SQLProcess {
 			data.put("price", cursor.getDouble(3));
 			order.add(data);
 		}
+		
 		return Utils.ArrayListToJsonString(order);
 	}
 
@@ -112,6 +114,7 @@ public class SQLProcess {
 			data.put("price", cursor.getDouble(4));
 			order.add(data);
 		}
+		
 		return order;
 	}
 
@@ -125,6 +128,7 @@ public class SQLProcess {
 		while (cursor.moveToNext()) {
 			ordertotal += cursor.getDouble(0);
 		}
+		
 		return ordertotal;
 	}
 

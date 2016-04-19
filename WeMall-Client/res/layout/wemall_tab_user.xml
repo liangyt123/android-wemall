@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/userloginlayout"
-        layout="@layout/wemall_user_login"
+        layout="@layout/wemall_user_login_test"
          />
 
     <include
