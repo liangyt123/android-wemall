@@ -34,7 +34,7 @@ public class Regist extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.wemall_user_register);
+		setContentView(R.layout.wemall_user_register_test);
 		Bundle bundle = this.getIntent().getExtras();
 		backbar = (ViewGroup) findViewById(R.id.title_left_layout_regist);
 		wemall_phonenumber = (TextView) findViewById(R.id.wemall_register_phonenum);

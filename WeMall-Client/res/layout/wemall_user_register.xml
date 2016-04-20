@@ -329,7 +329,6 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
-
     <ProgressBar
         android:id="@+id/registloadingBar"
         style="?android:attr/progressBarStyleLarge"
