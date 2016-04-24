@@ -54,7 +54,8 @@ public class MainUIMain extends FragmentActivity implements
 	private PagerAdapter pageadapter = null;
 	private ArrayList<HashMap<String, Object>> menudata;
 	private SlideMenu slideMenu;
-	private TextView titleText, titleText2;
+	public static TextView titleText;
+	private TextView  titleText2;
 	private ViewGroup MenuButton;
 	private RadioButton navigationBtn[] = new RadioButton[3];
 	// 页卡内容
@@ -62,7 +63,7 @@ public class MainUIMain extends FragmentActivity implements
 	// Tab页面列表
 	private List<Fragment> fragmentList = new ArrayList<Fragment>();
 	// 当前页面
-	private MainUiGoods Goods;
+	public static MainUiGoods Goods;
 	private MainUiCart Cart;
 	private MainUIUser User;
 	private long exitTime = 0;

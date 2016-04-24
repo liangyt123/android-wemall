@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import cn.edu.zzu.wemall.mylazylist.LazyAdapter;
 import cn.edu.zzu.wemall.myview.XListView;
 import cn.edu.zzu.wemall.myview.XListView.IXListViewListener;
 import cn.edu.zzu.wemall.net.NetGoodsData;
+import cn.edu.zzu.wemall.net.NetGoodsType;
 import cn.edu.zzu.wemall.object.GoodsItem;
 import cn.zzu.edu.wemall.utils.Utils;
 
@@ -42,6 +45,7 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 		IXListViewListener {
 	private ArrayList<GoodsItem> Items, DisplayItem;
 	private Handler handler = null;
+	private Handler handler2 = null;
 	private View view;
 	private LazyAdapter adapter;
 	private ViewGroup topbar, list;
@@ -51,6 +55,10 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 	private boolean PullRefresh = true;
 	private int num = 30;// 每次显示的条目数，多余的隐藏到上拉加载更多里面
 	private int group = 1;// 显示第几组数据，分段加载需要
+	
+	private ArrayList<HashMap<String, Object>> menudata;
+	public LinearLayout type1,type2,type3,type4,type5,type6,type7,type8;
+	private TextView type1name,type2name,type3name,type4name,type5name,type6name,type7name,type8name;
 
 	@SuppressLint("InflateParams")
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,12 +69,129 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 		list = (ViewGroup) view.findViewById(R.id.list);
 		loading = (ProgressBar) view.findViewById(R.id.good_loadingBar);
 		reload.setOnClickListener(this);
+		
+		type1=(LinearLayout)view.findViewById(R.id.type1);
+		type1name=(TextView)view.findViewById(R.id.type1name);
+		type2=(LinearLayout)view.findViewById(R.id.type2);
+		type2name=(TextView)view.findViewById(R.id.type2name);
+		type3=(LinearLayout)view.findViewById(R.id.type3);
+		type3name=(TextView)view.findViewById(R.id.type3name);
+		type4=(LinearLayout)view.findViewById(R.id.type4);
+		type4name=(TextView)view.findViewById(R.id.type4name);
+		type5=(LinearLayout)view.findViewById(R.id.type5);
+		type5name=(TextView)view.findViewById(R.id.type5name);
+		type6=(LinearLayout)view.findViewById(R.id.type6);
+		type6name=(TextView)view.findViewById(R.id.type6name);
+		type7=(LinearLayout)view.findViewById(R.id.type7);
+		type7name=(TextView)view.findViewById(R.id.type7name);
+		type8=(LinearLayout)view.findViewById(R.id.type8);
+		type8name=(TextView)view.findViewById(R.id.type8name);
+		type1.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(1).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(1)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+        type2.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(2).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(2)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+        type3.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(3).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(3)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+        type4.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(4).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(4)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+        type5.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(5).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(5)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+        type6.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(6).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(6)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+        type7.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(7).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(7)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+        type8.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainUIMain.titleText.setText((String) menudata.get(8).get("name"));
+				MainUIMain.Goods.resetgroup();
+				MainUIMain.Goods.initview(Integer.parseInt(menudata.get(8)
+						.get("id").toString()));
+				MainUIMain.Goods.resetlist();
+			}
+		});
+		
 		return view;
 	}
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Items = new ArrayList<GoodsItem>();
+		
+		menudata = new ArrayList<HashMap<String, Object>>();
+		
 		DisplayItem = new ArrayList<GoodsItem>();
 		adapter = new LazyAdapter(getActivity(), DisplayItem);
 		setListAdapter(adapter);
@@ -92,6 +217,41 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 				handler.sendEmptyMessage(0x11021);
 			}
 		};
+		
+		Runnable runnable2 = new Runnable() {
+			public void run() {
+				// xmlwebData解析网络中xml中的数据
+				try {
+					menudata = NetGoodsType.getData();
+				} catch (Exception e) {
+
+				}
+				// 发送消息，并把persons结合对象传递过去
+				handler2.sendEmptyMessage(0x11024);
+			}
+		};
+		try {
+			// 开启线程
+			new Thread(runnable2).start();
+			// handler与线程之间的通信及数据处理
+			handler2 = new Handler() {
+				public void handleMessage(Message msg) {
+					if (msg.what == 0x11024) {
+						type1name.setText(menudata.get(1).get("name").toString());
+						type2name.setText(menudata.get(2).get("name").toString());
+						type3name.setText(menudata.get(3).get("name").toString());
+						type4name.setText(menudata.get(4).get("name").toString());
+						type5name.setText(menudata.get(5).get("name").toString());
+						type6name.setText(menudata.get(6).get("name").toString());
+						type7name.setText(menudata.get(7).get("name").toString());
+						type8name.setText(menudata.get(8).get("name").toString());
+					}
+				}
+			};
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		try {
 			// 开启线程
 			new Thread(runnable).start();
