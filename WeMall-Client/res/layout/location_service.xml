@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+         android:background="#3975cb"
+        android:orientation="horizontal" >
+        
+        <Button 
+           android:id="@+id/btn_back_MainUi"
+           android:layout_height="25dp"
+           android:layout_width="30dp"
+           android:background="@drawable/back_apoint"
+           />
+        
+        <View 
+            android:layout_height="fill_parent"
+            android:layout_width="1dp"
+            android:background="#9C9C9C"
+            android:layout_marginLeft="3dp"/>
+
+        <EditText
+            android:id="@+id/et_write_location"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+           android:layout_marginLeft="10dp"
+           android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:hint="请输入位置"
+            android:textColorHint="#ffffff" />
+        <Button 
+            android:id="@+id/btn_search_location"
+            android:layout_height="match_parent"
+            android:layout_width="60dp"
+            android:text="搜索"
+            />
+    </LinearLayout>
+    
+   <LinearLayout 
+       android:layout_height="wrap_content"
+       android:layout_width="fill_parent"
+       android:layout_marginTop="20dp"
+       android:orientation="horizontal">
+
+       <TextView
+           android:id="@+id/tv_location_result"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_vertical"
+           android:layout_weight="1"
+           android:maxWidth="160dp"
+           android:singleLine="true"
+           android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_dingwei"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/location_auto"
+            />
+
+   </LinearLayout>
+   
+
+</LinearLayout>

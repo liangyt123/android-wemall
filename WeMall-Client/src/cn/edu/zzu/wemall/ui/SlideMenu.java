@@ -33,7 +33,7 @@ public class SlideMenu extends ViewGroup {
 	private float mLastMotionY;
 
 	private final static int TOUCH_STATE_REST = 0;
-	private final static int TOUCH_STATE_SCROLLING = 1;
+	private final static int TOUCH_STATE_SCROLLING = 0;
 	private static final int SNAP_VELOCITY = 1000;
 
 	public int mTouchState = TOUCH_STATE_REST;

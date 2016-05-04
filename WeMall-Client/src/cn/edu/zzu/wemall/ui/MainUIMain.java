@@ -32,8 +32,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.edu.zzu.wemall.R;
@@ -56,6 +58,13 @@ public class MainUIMain extends FragmentActivity implements
 	private SlideMenu slideMenu;
 	public static TextView titleText;
 	private TextView  titleText2;
+	
+	//自动定位
+	private ImageView location_sign;
+	private TextView location_text;
+	
+	private RelativeLayout slidemenubar;
+	
 	private ViewGroup MenuButton;
 	private RadioButton navigationBtn[] = new RadioButton[3];
 	// 页卡内容
@@ -79,11 +88,35 @@ public class MainUIMain extends FragmentActivity implements
 		Cart = new MainUiCart();
 		User = new MainUIUser();
 		Goods = new MainUiGoods();
+		
+		slidemenubar=(RelativeLayout) findViewById(R.id.slidemenubar);
+		
 		titleText = (TextView) findViewById(R.id.main_title_text);
 		titleText2 = (TextView) findViewById(R.id.main_title_text2);
 		slideMenu = (SlideMenu) findViewById(R.id.slide_menu);
 		MenuButton = (ViewGroup) findViewById(R.id.main_title_left_layout_details);
 		menulistview = (ListView) findViewById(R.id.menulist);
+		location_sign=(ImageView) findViewById(R.id.location_sign);
+		location_text = (TextView) findViewById(R.id.location_text);
+		
+		
+		
+		location_sign.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent();
+				intent.setClass(MainUIMain.this, Location_service.class);
+				startActivity(intent);
+			}
+		});
+		
+		Intent iResult_location=super.getIntent();
+		location_text.setText(iResult_location.getStringExtra("location"));
+		
+		
+		
 		menulistview.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -119,11 +152,13 @@ public class MainUIMain extends FragmentActivity implements
 			@Override
 			public void onClick(View arg0) {
 				if (slideMenu.isMainScreenShowing()) {
-					slideMenu.openMenu();
+					//slideMenu.openMenu();
+					slideMenu.closeMenu();
 					viewPager.setClickable(false);
 				} else {
 					slideMenu.closeMenu();
-					viewPager.setClickable(true);
+					//viewPager.setClickable(true);
+					viewPager.setClickable(false);
 				}
 
 			}
@@ -241,7 +276,8 @@ public class MainUIMain extends FragmentActivity implements
 		switch (buttonView.getId()) {
 		case R.id.type_tab_good:
 			currentFragment = 0;
-			MenuButton.setVisibility(View.VISIBLE);
+			slidemenubar.setVisibility(View.VISIBLE);
+			titleText.setVisibility(View.GONE);
 			titleText2.setVisibility(View.GONE);
 			if (!slideMenu.isMainScreenShowing()) {
 				slideMenu.closeMenu();
@@ -251,13 +287,13 @@ public class MainUIMain extends FragmentActivity implements
 			currentFragment = 1;
 			titleText2.setVisibility(View.VISIBLE);
 			titleText2.setText("购物车");
-			MenuButton.setVisibility(View.GONE);
+			slidemenubar.setVisibility(View.GONE);
 			break;
 		case R.id.type_tab_user:
 			currentFragment = 2;
 			titleText2.setVisibility(View.VISIBLE);
 			titleText2.setText("个人中心");
-			MenuButton.setVisibility(View.GONE);
+			slidemenubar.setVisibility(View.GONE);
 			break;
 		}
 		viewPager.setCurrentItem(currentFragment);
