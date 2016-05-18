@@ -66,18 +66,18 @@ public final class R {
 		public static final int smssdk_dialog_back = 0x7f020045;
 		public static final int smssdk_dialog_bg = 0x7f020046;
 		public static final int smssdk_dialog_btn_back = 0x7f020047;
-		public static final int smssdk_dialog_btn_nor = 0x7f020121;
-		public static final int smssdk_dialog_btn_pre = 0x7f020122;
+		public static final int smssdk_dialog_btn_nor = 0x7f020123;
+		public static final int smssdk_dialog_btn_pre = 0x7f020124;
 		public static final int smssdk_edittext_bg_selector = 0x7f020048;
 		public static final int smssdk_input_bg_focus = 0x7f020049;
 		public static final int smssdk_input_bg_normal = 0x7f02004a;
 		public static final int smssdk_input_bg_special_focus = 0x7f02004b;
 		public static final int smssdk_input_bg_special_normal = 0x7f02004c;
 		public static final int smssdk_search_icon = 0x7f02004d;
-		public static final int wemall_back_btn = 0x7f0200dd;
-		public static final int wemall_background_back = 0x7f0200de;
-		public static final int wemall_btn_back_normal = 0x7f0200e0;
-		public static final int wemall_btn_back_press = 0x7f0200e1;
+		public static final int wemall_back_btn = 0x7f0200de;
+		public static final int wemall_background_back = 0x7f0200df;
+		public static final int wemall_btn_back_normal = 0x7f0200e1;
+		public static final int wemall_btn_back_press = 0x7f0200e2;
 	}
 	public static final class id {
 		public static final int btn_add = 0x7f0c003a;
