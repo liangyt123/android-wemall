@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.edu.zzu.wemall"
+    android:versionCode="3"
+    android:versionName="1.2" 
+    android:hardwareAccelerated="true">
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="14" />
+    
+    
+          <!-- 这个权限用于进行网络定位 -->
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+        </uses-permission>
+        <!-- 这个权限用于访问GPS定位 -->
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+        </uses-permission>
+        <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+        </uses-permission>
+        <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+        </uses-permission>
+        <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+        <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
+        </uses-permission>
+        <!-- 用于读取手机当前的状态 -->
+        <uses-permission android:name="android.permission.READ_PHONE_STATE" >
+        </uses-permission>
+        <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+        </uses-permission>
+        <!-- SD卡读取权限，用户写入离线定位数据 -->
+        <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
+        </uses-permission>
+    
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/wemall_app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="cn.edu.zzu.wemall.splash.SplashActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/wemall_app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.edu.zzu.wemall.splash.WelcomeMain"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/wemall_app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.MainUIMain"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 关于应用页面-->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.About"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 地址设置 -->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.UpdateAddress"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 我的订单 -->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.Myorder"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 修改密码 -->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.ChangePasswd"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 注册 -->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.Regist"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 找回密码 -->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.RecoveryPasswd"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 关于应用中的使用许可-->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.Gpl"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 商品详情 -->
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.ItemDetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_Animation_Activity_RightInRightOut" >
+        </activity>
+        <!-- ************************************************************************* -->
+        <!-- 以下为第三方信息，请注意填写 -->
+        <!-- 此处填写U盟的APPkey -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="546446affd98c5aee6003cd5" />
+        <!-- 此处填写高德地图的apikey -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="44ab6e6b57f17a1c1c32cff75dba5219" />
+
+        <!-- 001-SMS短信验证码 -->
+        <activity
+            android:name="cn.smssdk.SMSSDKUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!-- 002-U盟分享组件 -->
+        <activity
+            android:name="com.umeng.socialize.view.ShareActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@style/Theme.UMDialog"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <!-- 003-微信分享 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- 004-人人分享 -->
+        <activity
+            android:name="com.renn.rennsdk.oauth.OAuthActivity"
+            android:configChanges="orientation|navigation|keyboardHidden" />
+        <!-- 005-腾讯分享 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:configChanges="orientation|keyboard"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- 此处填写 tencent App Id -->
+                <data android:scheme="" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- ************************************************************************* -->
+        
+        <activity
+            android:name="cn.edu.zzu.wemall.ui.Location_service"/>
+        
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Lxi7Fzs08BLAFONi634nnwOvNv460xQE" />
+</application>
+
+</manifest>

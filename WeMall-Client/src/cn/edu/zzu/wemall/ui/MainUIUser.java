@@ -85,6 +85,7 @@ public class MainUIUser extends Fragment implements OnClickListener {
 	private SharedHelper sh;
 	private Context mContext;
 	private CheckBox check;
+	boolean isfirst=true;
 
 	@SuppressLint("InflateParams")
 	@Override
@@ -372,16 +373,23 @@ public class MainUIUser extends Fragment implements OnClickListener {
 					R.anim.wemall_slide_in_right, R.anim.wemall_slide_out_left);
 			break;
 		case R.id.topuserinfo:
-			Intent intent2 = new Intent(getActivity(), UpdateAddress.class);
-			// 用Bundle携带数据
-			Bundle bundle2 = new Bundle();
-			// 传递name参数为tinyphp
-			bundle2.putString("uid", useruid);
-			intent2.putExtras(bundle2);
-			startActivityForResult(intent2, 0x711);
-			// 定义进入新的Activity的动画
-			((MainUIMain) getActivity()).overridePendingTransition(
-					R.anim.wemall_slide_in_right, R.anim.wemall_slide_out_left);
+			if(isfirst){
+				user_login_layout.setVisibility(View.VISIBLE);
+				user_center_layout.setVisibility(View.GONE);
+				isfirst=false;
+			}else{
+				Intent intent2 = new Intent(getActivity(), UpdateAddress.class);
+				// 用Bundle携带数据
+				Bundle bundle2 = new Bundle();
+				// 传递name参数为tinyphp
+				bundle2.putString("uid", useruid);
+				intent2.putExtras(bundle2);
+				startActivityForResult(intent2, 0x711);
+				// 定义进入新的Activity的动画
+				((MainUIMain) getActivity()).overridePendingTransition(
+						R.anim.wemall_slide_in_right, R.anim.wemall_slide_out_left);
+			}
+			
 			break;
 		case R.id.user_center_user_icon:
 			ChangeUserIcon();
