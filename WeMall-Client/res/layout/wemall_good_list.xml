@@ -10,7 +10,7 @@
 
     <LinearLayout  
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="95dp"
         android:orientation="horizontal">
             <LinearLayout  
                 android:id="@+id/type1"
@@ -22,12 +22,12 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/shuiguo"/>
+                    android:src="@drawable/rihanliaoli"/>
                 <TextView 
                     android:id="@+id/type1name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="水果"
+                    android:text="日韩料理"
                     android:textSize="15dp"/>
             </LinearLayout>
             <LinearLayout  
@@ -40,12 +40,12 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/lingshi"/>
+                    android:src="@drawable/xican"/>
                 <TextView 
                     android:id="@+id/type2name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="零食"
+                    android:text="西餐"
                     android:textSize="15dp"/>
             </LinearLayout>
             <LinearLayout  
@@ -58,12 +58,12 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/yinliao"/>
+                    android:src="@drawable/haixian"/>
                 <TextView 
                     android:id="@+id/type3name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="饮料"
+                    android:text="海鲜"
                     android:textSize="15dp"/>
             </LinearLayout>
             <LinearLayout  
@@ -76,19 +76,19 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/xiaochi"/>
+                    android:src="@drawable/tiandian"/>
                 <TextView 
                     android:id="@+id/type4name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="特价小吃"
+                    android:text="蛋糕甜点"
                     android:textSize="15dp"/>
             </LinearLayout>
         </LinearLayout >
         
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="95dp"
             android:orientation="horizontal">
             <LinearLayout  
                 android:id="@+id/type5"
@@ -100,12 +100,12 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/dangao"/>
+                    android:src="@drawable/waimai"/>
                 <TextView 
                     android:id="@+id/type5name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="蛋糕甜点"
+                    android:text="外卖"
                     android:textSize="15dp"/>
             </LinearLayout>
             <LinearLayout  
@@ -118,12 +118,12 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/liaoli"/>
+                    android:src="@drawable/xiaochi"/>
                 <TextView 
                     android:id="@+id/type6name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="日韩料理"
+                    android:text="特色小吃"
                     android:textSize="15dp"/>
             </LinearLayout>
             <LinearLayout  
@@ -136,12 +136,12 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/shenghuo"/>
+                    android:src="@drawable/kuaican"/>
                 <TextView 
                     android:id="@+id/type7name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="生活用品"
+                    android:text="演示快餐"
                     android:textSize="15dp"/>
             </LinearLayout>
             <LinearLayout  
@@ -154,13 +154,13 @@
                 <ImageView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/tejia"
+                    android:src="@drawable/kongbai"
                     />
                 <TextView 
                     android:id="@+id/type8name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="特价商品"
+                    android:text="xcx"
                     android:textSize="15dp"/>
             </LinearLayout>
     </LinearLayout>
