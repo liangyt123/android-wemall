@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ import com.umeng.analytics.MobclickAgent;
 public class MainUiGoods extends ListFragment implements OnClickListener,
 		IXListViewListener {
 	private ArrayList<GoodsItem> Items, DisplayItem;
+	private ArrayList<GoodsItem> myDisplayItem;
 	private Handler handler = null;
 	private Handler handler2 = null;
 	private View view;
@@ -86,6 +88,8 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 		type7name=(TextView)view.findViewById(R.id.type7name);
 		type8=(LinearLayout)view.findViewById(R.id.type8);
 		type8name=(TextView)view.findViewById(R.id.type8name);
+		
+		
 		type1.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -278,14 +282,20 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 		}
 	}
 
-	// 初始化ListView,我们在这里使用typeid来标识要用那些数据初始化,以供分类时使用,如果初始化全部商品则使用-1
+	// 初始化ListView,我们在这里使用typeid来标识要用那些数据初始化
+	//以供分类时使用,如果初始化全部商品则使用-1
 	void initview(int typeid) {
+		
+		
+		System.out.println("要搜索的是："+MainUIMain.search_str);
+		
 		((XListView) getListView()).setPullLoadEnable(true);
 		this.typeid = typeid;
 		DisplayItem = new ArrayList<GoodsItem>();
+		
 		try {
 			DisplayItem = (ArrayList<GoodsItem>) DeepCopy(Items);
-
+			
 			if (!(typeid == -1)) {
 				// 处理要显示的数据,过滤掉不需要的,亲,不要从小往大循环,想想为什么
 
@@ -295,6 +305,15 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 					}
 				}
 			}
+			
+			if(MainUIMain.search_str!=null) {
+				for (int i = DisplayItem.size() - 1; i >= 0; i--) {
+					if(!DisplayItem.get(i).getName().contains(MainUIMain.search_str)) {
+						DisplayItem.remove(i);
+					}
+				}
+			}
+			
 			if (DisplayItem.size() > ((group == 1) ? num : num * (group - 1))) {
 				for (int i = DisplayItem.size() - 1; i >= (num * group); i--) {
 					DisplayItem.remove(i);
@@ -307,6 +326,7 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 				}
 
 			}
+			
 			//
 			adapter.set_datasource(DisplayItem);
 			adapter.notifyDataSetChanged();
@@ -320,6 +340,51 @@ public class MainUiGoods extends ListFragment implements OnClickListener,
 		}
 
 	}
+	
+	/*// 初始化ListView,我们在这里使用typeid来标识要用那些数据初始化
+		//以供分类时使用,如果初始化全部商品则使用-1
+	void myinitview(String str) {
+		System.out.println("是否进入这个函数"+str);
+		((XListView) getListView()).setPullLoadEnable(true);
+		myDisplayItem = new ArrayList<GoodsItem>();
+
+			try {
+				System.out.println("是否进入try这个函数"+myDisplayItem.size());
+				myDisplayItem = (ArrayList<GoodsItem>) DeepCopy(Items);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if (myDisplayItem.size() > ((group == 1) ? num : num * (group - 1))) {
+				for (int i = myDisplayItem.size() - 1; i >= (num * group); i--) {
+					myDisplayItem.remove(i);
+				}
+			} else {
+				((XListView) getListView()).setPullLoadEnable(false);
+				if (group > 1) {
+					Toast.makeText(getActivity(), "没有更多了", Toast.LENGTH_SHORT)
+							.show();
+					}
+
+				}
+			for(int i=0;i<myDisplayItem.size();i++){
+				System.out.println("第一个");
+				if(!myDisplayItem.get(i).getName().contains(str)){
+					System.out.println("第二个");
+					System.out.println("myDisplayItem的值是："+myDisplayItem.get(i).getName());
+					myDisplayItem.remove(i);
+				
+			}
+			System.out.println("第三个");
+			adapter.set_datasource(myDisplayItem);
+			adapter.notifyDataSetChanged();
+			onLoad();
+			}
+		}*/
 
 	// 此处坑多！需要修改，未加载的情况下Count=0
 	public void onListItemClick(ListView l, View v, int position, long id) {
