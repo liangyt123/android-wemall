@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/title_layout_gpl"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/wemall_all_titlebar_height"
         android:background="@color/wemall_all_titlebar_back" >
 
         <LinearLayout

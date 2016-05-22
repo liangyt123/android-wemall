@@ -33,6 +33,7 @@
                     android:layout_marginRight="16.0dip"
                     android:layout_marginTop="15.0dip"
                     android:clickable="true"
+                    android:src="@drawable/person"
                     app:border_color="@color/gray_efefef"
                     app:border_width="0dp" />
 
@@ -60,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/user_center_address"
                     android:layout_alignLeft="@+id/user_center_address"
-                    android:text="@string/wemall_usercentername"
+                    android:text="请点击这里登陆"
                     android:textColor="@color/black_444444"
                     android:textSize="18sp" />
             </RelativeLayout>

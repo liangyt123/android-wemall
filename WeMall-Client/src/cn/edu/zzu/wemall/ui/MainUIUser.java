@@ -1,8 +1,10 @@
 package cn.edu.zzu.wemall.ui;
 
 import java.io.ByteArrayOutputStream;
+
 import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.http.Header;
 
@@ -27,6 +29,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -55,7 +58,8 @@ import com.umeng.analytics.MobclickAgent;
  * 
  */
 public class MainUIUser extends Fragment implements OnClickListener {
-
+	private String strname="";
+    private String strpasswd="";
 	private View view;
 	private ViewGroup user_login_layout, user_center_layout, user_logout,
 			usercenter_about, user_center_myorder, user_center_claer,
@@ -78,6 +82,10 @@ public class MainUIUser extends Fragment implements OnClickListener {
 	private String PHOTO_FILE_NAME = ".temp.jpg";
 	private File tempFile;
 	private ImageLoader imageLoader;
+	private SharedHelper sh;
+	private Context mContext;
+	private CheckBox check;
+	boolean isfirst=true;
 
 	@SuppressLint("InflateParams")
 	@Override
@@ -121,6 +129,12 @@ public class MainUIUser extends Fragment implements OnClickListener {
 				.findViewById(R.id.user_center_address);
 		usercenter_username = (TextView) view
 				.findViewById(R.id.user_center_username);
+		mContext=getActivity().getApplicationContext();
+		check=(CheckBox) view.findViewById(R.id.wemall_is_agree);
+        sh = new SharedHelper(mContext);
+        Map<String,String> data = sh.read();
+        account.setText(data.get("username"));
+        passwd.setText(data.get("passwd"));
 		this.userinfo = getActivity().getSharedPreferences("userinfo", 0);
 		this.ReadPreferences();
 		if (!(useruid.equals("NULL") || username.equals("NULL")
@@ -135,6 +149,7 @@ public class MainUIUser extends Fragment implements OnClickListener {
 				usercenter_address.setText(useraddress);
 			}
 		}
+		
 		regist.setOnClickListener(this);
 		login.setOnClickListener(this);
 		return view;
@@ -207,11 +222,21 @@ public class MainUIUser extends Fragment implements OnClickListener {
 		}
 
 		else if (userinfo.get("state").equals("1")) {
+			
 			this.SavePreferences((String) userinfo.get("uid"),
 					(String) userinfo.get("name"),
 					(String) userinfo.get("phone"),
 					(String) userinfo.get("address"));
-
+			if(check.isChecked())
+			{strname = account.getText().toString();
+	        strpasswd = passwd.getText().toString();
+			sh.save(strname,strpasswd);
+			}
+			else
+			{
+				strname = account.getText().toString();
+				sh.save(strname,"");
+			}
 			this.ReadPreferences();
 			// 初始化已登录界面//////////////////////////////////////////////
 			account.setText("");
@@ -348,16 +373,23 @@ public class MainUIUser extends Fragment implements OnClickListener {
 					R.anim.wemall_slide_in_right, R.anim.wemall_slide_out_left);
 			break;
 		case R.id.topuserinfo:
-			Intent intent2 = new Intent(getActivity(), UpdateAddress.class);
-			// 用Bundle携带数据
-			Bundle bundle2 = new Bundle();
-			// 传递name参数为tinyphp
-			bundle2.putString("uid", useruid);
-			intent2.putExtras(bundle2);
-			startActivityForResult(intent2, 0x711);
-			// 定义进入新的Activity的动画
-			((MainUIMain) getActivity()).overridePendingTransition(
-					R.anim.wemall_slide_in_right, R.anim.wemall_slide_out_left);
+			if(isfirst){
+				user_login_layout.setVisibility(View.VISIBLE);
+				user_center_layout.setVisibility(View.GONE);
+				isfirst=false;
+			}else{
+				Intent intent2 = new Intent(getActivity(), UpdateAddress.class);
+				// 用Bundle携带数据
+				Bundle bundle2 = new Bundle();
+				// 传递name参数为tinyphp
+				bundle2.putString("uid", useruid);
+				intent2.putExtras(bundle2);
+				startActivityForResult(intent2, 0x711);
+				// 定义进入新的Activity的动画
+				((MainUIMain) getActivity()).overridePendingTransition(
+						R.anim.wemall_slide_in_right, R.anim.wemall_slide_out_left);
+			}
+			
 			break;
 		case R.id.user_center_user_icon:
 			ChangeUserIcon();
@@ -503,7 +535,9 @@ public class MainUIUser extends Fragment implements OnClickListener {
 				DestroyPreferences();
 				user_login_layout.setVisibility(View.VISIBLE);
 				user_center_layout.setVisibility(View.GONE);
-
+				Map<String,String> data = sh.read();
+		        account.setText(data.get("username"));
+		        passwd.setText(data.get("passwd"));
 			}
 		});
 		ViewGroup logoutcancel = (ViewGroup) window

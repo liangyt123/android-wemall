@@ -63,9 +63,6 @@ public class MainUIMain extends FragmentActivity implements
 	private ImageView location_sign;
 	private TextView location_text;
 	
-	//搜索商品
-	private ImageView search_sign;
-	
 	private RelativeLayout slidemenubar;
 	
 	private ViewGroup MenuButton;
@@ -83,6 +80,7 @@ public class MainUIMain extends FragmentActivity implements
 	public static PagerAdapter mpAdapter;
 	private Handler handler = null;
 	
+	private ImageView search_sign;
 	public static String search_str=null;
 
 	@Override
@@ -104,9 +102,18 @@ public class MainUIMain extends FragmentActivity implements
 		location_sign=(ImageView) findViewById(R.id.location_sign);
 		location_text = (TextView) findViewById(R.id.location_text);
 		search_sign=(ImageView) findViewById(R.id.search_sign);
-		
-		
-		//自动定位
+
+		//跳转到搜索商品页面
+		search_sign.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i=new Intent(MainUIMain.this,SearchGoods.class);
+				startActivity(i);
+			}
+		});
+
 		location_sign.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -118,21 +125,12 @@ public class MainUIMain extends FragmentActivity implements
 			}
 		});
 		
-		//跳转到搜索商品页面
-		search_sign.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i=new Intent(MainUIMain.this,SearchGoods.class);
-				startActivity(i);
-			}
-		});
-		
 		Intent iResult_location=super.getIntent();
 		location_text.setText(iResult_location.getStringExtra("location"));
 		
-/*		menulistview.setOnItemClickListener(new OnItemClickListener() {
+		
+		
+		menulistview.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -147,12 +145,12 @@ public class MainUIMain extends FragmentActivity implements
 					titleText.setText((String) menudata.get(arg2).get("name"));
 					Goods.resetgroup();
 					Goods.initview(Integer.parseInt(menudata.get(arg2)
-							.get("id").toString()),search_str);
+							.get("id").toString()));
 					Goods.resetlist();
 				}
 			}
 
-		});*/
+		});
 		menudata = new ArrayList<HashMap<String, Object>>();
 		menuadapter = new MenuAdapter(this, menudata);
 		menulistview.setAdapter(menuadapter);
@@ -189,20 +187,8 @@ public class MainUIMain extends FragmentActivity implements
 		//搜索商品
 		Intent search_it=super.getIntent();
 		search_str=search_it.getStringExtra("searchName");
-		/*if(search_str!=null){
-			try {
-				
-				System.out.println(search_str);
-				Goods.resetgroup();
-				Goods.myinitview(search_str);
-				Goods.resetlist();
-				
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		}*/
-		
 	}
+
 	protected Context getActivity() {
 		// TODO Auto-generated method stub
 		return null;
