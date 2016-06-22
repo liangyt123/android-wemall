@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>微信支付成功</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="css/lanren.css">
+<script language="javascript">
+var d = new Date();
+var vYear = d.getFullYear();
+var vMon = d.getMonth() + 1;
+var vDay = d.getDate();
+var h = d.getHours(); 
+var m = d.getMinutes(); 
+var se = d.getSeconds(); 
+
+function doLoad(){
+s=vYear+"-"+(vMon<10 ? "0" + vMon : vMon)+"-"+(vDay<10 ? "0"+ vDay : vDay)+" "+(h<10 ? "0"+ h : h)+":"+(m<10 ? "0" + m : m)+":"+(se<10 ? "0" +se : se);
+document.getElementById('currentTime').innerHTML=s;
+var urlinfo = window.location.href;                                                                //获取url
+var  summary= urlinfo.split("?")[1].split("=")[1];     
+document.getElementById('summary').innerHTML=decodeURI(summary);
+
+}
+
+</script>
+</head>
+<body onload="doLoad()">
+<div class="header">
+  <div class="all_w" style="position:relative; z-index:1;">
+    <div class="ttwenz" style=" text-align:center; width:100%;">
+      <h4>交易详情</h4>
+      <h5>微信安全支付</h5>
+    </div>
+    <a href="index.html" class="fh_but">返回</a> </div>
+</div>
+
+<div class="zfcg_box ">
+<div class="all_w">
+<img src="images/cg_03.jpg" > 支付成功 </div>
+
+</div>
+<div class="cgzf_info">
+<div class="wenx_xx">
+  <div class="mz">wemall微信商城</div>
+  <div class="wxzf_price" id="summary" >￥0</div>
+</div>
+
+<div class="spxx_shop">
+ <div class=" mlr_pm">
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>商   品</td>
+    <td align="right">wemall微信商城</td>
+  </tr>
+   <tr>
+    <td>交易时间</td>
+    <td align="right" id="currentTime">0-0-0 0：0：0</td>
+  </tr>
+   <tr>
+    <td>支付方式</td>
+    <td align="right">招商银行</td>
+  </tr>
+   <tr>
+    <td>交易单号</td>
+    <td align="right">1205329821521545465665855444</td>
+  </tr>
+</table>
+
+ </div>
+
+</div>
+</div>
+
+
+<div class="wzxfcgde_tb"><img src="images/cg_07.jpg" ></div>
+</body>
+</html>
